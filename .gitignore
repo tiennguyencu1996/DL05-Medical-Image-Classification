@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Medical image datasets
+data/raw/
+data/interim/
+data/processed/
+
+# Model checkpoints
+outputs/checkpoints/
+*.keras
+*.h5
+
+# Training logs
+outputs/logs/
+
+# Patient-level predictions
+outputs/metrics/predictions.csv
