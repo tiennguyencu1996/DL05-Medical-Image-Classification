@@ -30,11 +30,11 @@ SPLIT_FILES = {
 }
 
 IMAGE_SIZE = 224
-BATCH_SIZE = 16
+BATCH_SIZE = 8
 RANDOM_SEED = 42
 
 SHUFFLE_BUFFER = 2048
-NUM_PARALLEL_CALLS = 4
+NUM_PARALLEL_CALLS = 2
 PREFETCH_BUFFER = 1
 
 LABEL_TO_ID = {
@@ -383,7 +383,8 @@ def decode_and_resize(image_path, label):
 def build_dataset(
     paths,
     labels,
-    training=False
+    training=False,
+    shuffle_seed=None,
 ):
     """
     Build a tf.data pipeline.
@@ -399,6 +400,10 @@ def build_dataset(
         (paths, labels)
     )
 
+    # Default to the project seed for backward compatibility.
+    if shuffle_seed is None:
+        shuffle_seed = RANDOM_SEED
+
     # Shuffle only training data.
     if training:
 
@@ -407,7 +412,7 @@ def build_dataset(
                 len(paths),
                 SHUFFLE_BUFFER
             ),
-            seed=RANDOM_SEED,
+            seed=shuffle_seed,
             reshuffle_each_iteration=True,
         )
 
@@ -447,7 +452,17 @@ def build_dataset(
 # 6. BUILD ALL DATASETS
 # ============================================================
 
-def build_datasets():
+def build_datasets(shuffle_seed=None):
+    """Build train, validation, and test datasets.
+
+    Args:
+        shuffle_seed: Optional seed for the training split shuffle.
+            Validation and test datasets are never shuffled.
+            If omitted, RANDOM_SEED is used as before.
+    """
+
+    if shuffle_seed is None:
+        shuffle_seed = RANDOM_SEED
 
     print("=" * 70)
     print("BUILDING CHEST X-RAY INPUT PIPELINE")
@@ -500,6 +515,7 @@ def build_datasets():
             split_paths["train"],
             split_labels["train"],
             training=True,
+            shuffle_seed=shuffle_seed,
         ),
 
         "validation": build_dataset(

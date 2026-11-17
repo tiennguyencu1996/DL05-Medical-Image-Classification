@@ -33,3 +33,7 @@ outputs/logs/
 
 # Patient-level predictions
 outputs/metrics/predictions.csv
+# Local experiment artifacts
+outputs/experiments/
+outputs/metrics/cnn_from_scratch_v1_history.csv
+outputs/metrics/cnn_from_scratch_v1_training_summary.json
