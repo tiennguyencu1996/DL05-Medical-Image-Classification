@@ -1,0 +1,177 @@
+{
+    "project": "DL-05 Medical Image Classification",
+    "dataset": "Chest X-Ray Pneumonia - Mendeley Data Version 3",
+    "positive_class": "PNEUMONIA",
+    "label_mapping": {
+        "NORMAL": 0,
+        "PNEUMONIA": 1
+    },
+    "data_splits": {
+        "train": {
+            "images": 4164,
+            "patients": 2120,
+            "class_counts": {
+                "NORMAL": 1078,
+                "PNEUMONIA": 3086
+            }
+        },
+        "validation": {
+            "images": 1042,
+            "patients": 530,
+            "class_counts": {
+                "NORMAL": 270,
+                "PNEUMONIA": 772
+            }
+        },
+        "test": {
+            "images": 621,
+            "patients": 431,
+            "class_counts": {
+                "NORMAL": 234,
+                "PNEUMONIA": 387
+            }
+        }
+    },
+    "majority_class_baseline": {
+        "predicted_class": "PNEUMONIA",
+        "evaluation": {
+            "validation": {
+                "threshold": null,
+                "accuracy": 0.7408829174664108,
+                "precision": 0.7408829174664108,
+                "sensitivity": 1.0,
+                "specificity": 0.0,
+                "macro_f1": 0.4255788313120176,
+                "auroc": 0.5,
+                "confusion_matrix": [
+                    [
+                        0,
+                        270
+                    ],
+                    [
+                        0,
+                        772
+                    ]
+                ],
+                "true_negative": 0,
+                "false_positive": 270,
+                "false_negative": 0,
+                "true_positive": 772
+            },
+            "test": {
+                "threshold": null,
+                "accuracy": 0.6231884057971014,
+                "precision": 0.6231884057971014,
+                "sensitivity": 1.0,
+                "specificity": 0.0,
+                "macro_f1": 0.38392857142857145,
+                "auroc": 0.5,
+                "confusion_matrix": [
+                    [
+                        0,
+                        234
+                    ],
+                    [
+                        0,
+                        387
+                    ]
+                ],
+                "true_negative": 0,
+                "false_positive": 234,
+                "false_negative": 0,
+                "true_positive": 387
+            }
+        },
+        "auroc_interpretation": "0.5 is the theoretical ROC-AUC of a constant score with no ranking discrimination."
+    },
+    "hog_logistic_regression": {
+        "feature_extraction": {
+            "image_size": [
+                128,
+                128
+            ],
+            "color": "Grayscale",
+            "resize_method": "Aspect-ratio preserving with black padding",
+            "orientations": 9,
+            "pixels_per_cell": [
+                8,
+                8
+            ],
+            "cells_per_block": [
+                2,
+                2
+            ],
+            "block_norm": "L2-Hys",
+            "transform_sqrt": true,
+            "feature_dimension": 8100
+        },
+        "logistic_regression": {
+            "C": 1.0,
+            "solver": "liblinear",
+            "max_iter": 2000,
+            "class_weight": null,
+            "random_state": 42
+        },
+        "threshold_selection": {
+            "threshold": 0.9851254388993979,
+            "sensitivity": 0.8510362694300518,
+            "specificity": 0.9925925925925926,
+            "target_sensitivity": 0.85
+        },
+        "evaluation": {
+            "validation": {
+                "threshold": 0.9851254388993979,
+                "accuracy": 0.8877159309021113,
+                "precision": 0.9969650986342944,
+                "sensitivity": 0.8510362694300518,
+                "specificity": 0.9925925925925926,
+                "macro_f1": 0.8695329731187456,
+                "auroc": 0.9933793897524468,
+                "confusion_matrix": [
+                    [
+                        268,
+                        2
+                    ],
+                    [
+                        115,
+                        657
+                    ]
+                ],
+                "true_negative": 268,
+                "false_positive": 2,
+                "false_negative": 115,
+                "true_positive": 657
+            },
+            "test": {
+                "threshold": 0.9851254388993979,
+                "accuracy": 0.9114331723027376,
+                "precision": 0.9438502673796791,
+                "sensitivity": 0.9121447028423773,
+                "specificity": 0.9102564102564102,
+                "macro_f1": 0.9066907805409776,
+                "auroc": 0.9764129066454648,
+                "confusion_matrix": [
+                    [
+                        213,
+                        21
+                    ],
+                    [
+                        34,
+                        353
+                    ]
+                ],
+                "true_negative": 213,
+                "false_positive": 21,
+                "false_negative": 34,
+                "true_positive": 353
+            }
+        },
+        "test_threshold_policy": "The threshold was selected using validation data only and then fixed for test evaluation."
+    },
+    "outputs": {
+        "metrics_csv": "outputs/metrics/baseline_metrics_v3.csv",
+        "metrics_json": "outputs/metrics/baseline_results_v3.json",
+        "predictions_csv": "outputs/metrics/predictions.csv",
+        "hog_model": "outputs/checkpoints/hog_logistic_regression_v3.joblib"
+    }
+}
