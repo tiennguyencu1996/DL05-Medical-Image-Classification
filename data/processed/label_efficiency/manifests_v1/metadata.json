@@ -1,0 +1,126 @@
+{
+  "experiment": "DL-05 label efficiency nested patient-stratified manifests",
+  "source_csv": "data/processed/splits/train_v3.csv",
+  "source_csv_sha256": "a016befaa42bf8dcdfd95628859ca6edf0a81c553aec96edac2574e755200f93",
+  "seed": 42,
+  "sampling_unit": "patient_id",
+  "stratification": "independent within NORMAL and PNEUMONIA patient groups",
+  "selection_method": "For each class, shuffle sorted patient IDs with a fixed class-specific seed; select nested prefixes whose cumulative image count is closest to the target class-wise image fraction. Keep every image belonging to a selected patient.",
+  "nominal_fractions": [
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "validation_or_test_opened": false,
+  "levels": {
+    "010pct": {
+      "manifest": "train_010pct.csv",
+      "images": 416,
+      "total_train_images": 4164,
+      "actual_overall_image_fraction": 0.09990393852065321,
+      "patients": 204,
+      "total_train_patients": 2120,
+      "actual_patient_fraction": 0.09622641509433963,
+      "class_distribution": {
+        "NORMAL": {
+          "images": 108,
+          "total_train_images": 1078,
+          "actual_image_fraction": 0.10018552875695733,
+          "patients": 81,
+          "total_train_patients": 806,
+          "actual_patient_fraction": 0.10049627791563276
+        },
+        "PNEUMONIA": {
+          "images": 308,
+          "total_train_images": 3086,
+          "actual_image_fraction": 0.09980557355800389,
+          "patients": 123,
+          "total_train_patients": 1314,
+          "actual_patient_fraction": 0.09360730593607305
+        }
+      }
+    },
+    "025pct": {
+      "manifest": "train_025pct.csv",
+      "images": 1042,
+      "total_train_images": 4164,
+      "actual_overall_image_fraction": 0.25024015369836694,
+      "patients": 529,
+      "total_train_patients": 2120,
+      "actual_patient_fraction": 0.24952830188679245,
+      "class_distribution": {
+        "NORMAL": {
+          "images": 269,
+          "total_train_images": 1078,
+          "actual_image_fraction": 0.24953617810760667,
+          "patients": 205,
+          "total_train_patients": 806,
+          "actual_patient_fraction": 0.2543424317617866
+        },
+        "PNEUMONIA": {
+          "images": 773,
+          "total_train_images": 3086,
+          "actual_image_fraction": 0.2504860661049903,
+          "patients": 324,
+          "total_train_patients": 1314,
+          "actual_patient_fraction": 0.2465753424657534
+        }
+      }
+    },
+    "050pct": {
+      "manifest": "train_050pct.csv",
+      "images": 2082,
+      "total_train_images": 4164,
+      "actual_overall_image_fraction": 0.5,
+      "patients": 1037,
+      "total_train_patients": 2120,
+      "actual_patient_fraction": 0.4891509433962264,
+      "class_distribution": {
+        "NORMAL": {
+          "images": 539,
+          "total_train_images": 1078,
+          "actual_image_fraction": 0.5,
+          "patients": 393,
+          "total_train_patients": 806,
+          "actual_patient_fraction": 0.48759305210918114
+        },
+        "PNEUMONIA": {
+          "images": 1543,
+          "total_train_images": 3086,
+          "actual_image_fraction": 0.5,
+          "patients": 644,
+          "total_train_patients": 1314,
+          "actual_patient_fraction": 0.4901065449010654
+        }
+      }
+    },
+    "100pct": {
+      "manifest": "train_100pct.csv",
+      "images": 4164,
+      "total_train_images": 4164,
+      "actual_overall_image_fraction": 1.0,
+      "patients": 2120,
+      "total_train_patients": 2120,
+      "actual_patient_fraction": 1.0,
+      "class_distribution": {
+        "NORMAL": {
+          "images": 1078,
+          "total_train_images": 1078,
+          "actual_image_fraction": 1.0,
+          "patients": 806,
+          "total_train_patients": 806,
+          "actual_patient_fraction": 1.0
+        },
+        "PNEUMONIA": {
+          "images": 3086,
+          "total_train_images": 3086,
+          "actual_image_fraction": 1.0,
+          "patients": 1314,
+          "total_train_patients": 1314,
+          "actual_patient_fraction": 1.0
+        }
+      }
+    }
+  }
+}

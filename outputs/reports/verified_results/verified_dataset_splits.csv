@@ -1,0 +1,4 @@
+split,images,patients,normal_0,pneumonia_1,pneumonia_share,relative_source
+Train,4164,2120,1078,3086,0.7411143131604226,data/processed/splits/train_v3.csv
+Validation,1042,530,270,772,0.7408829174664108,data/processed/splits/validation_v3.csv
+Test,621,431,234,387,0.6231884057971014,data/processed/splits/test_v3.csv

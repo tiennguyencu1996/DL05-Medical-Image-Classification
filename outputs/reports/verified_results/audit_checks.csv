@@ -1,0 +1,87 @@
+check,status,detail
+Split relative paths are unique,PASS,5827 rows; 5827 unique
+Split assignments cover deduplicated metadata exactly,PASS,"splits=5827, assignments=5827, deduplicated metadata=5827"
+Train-Validation patient overlap is zero,PASS,overlap=0
+Train-Validation SHA-256 overlap is zero,PASS,overlap=0
+Train-Test patient overlap is zero,PASS,overlap=0
+Train-Test SHA-256 overlap is zero,PASS,overlap=0
+Validation-Test patient overlap is zero,PASS,overlap=0
+Validation-Test SHA-256 overlap is zero,PASS,overlap=0
+Deduplication counts match summary,PASS,original=5856; retained=5827; excluded=29; groups=27
+Majority Classifier predictions row count matches Test,PASS,prediction rows=621; split rows=621
+Majority Classifier predictions row_index is contiguous,PASS,Expected 0..N-1
+Majority Classifier predictions labels match Test,PASS,Row-level labels compared in order
+HOG + Logistic Regression predictions row count matches Test,PASS,prediction rows=621; split rows=621
+HOG + Logistic Regression predictions row_index is contiguous,PASS,Expected 0..N-1
+HOG + Logistic Regression predictions labels match Test,PASS,Row-level labels compared in order
+CNN V2 10% Test predictions matches Test inventory/order,PASS,prediction rows=621; split rows=621
+CNN V2 10% Test predictions labels match Test,PASS,Row-level labels compared in order
+CNN V2 10% Test evaluation flags,PASS,Saved metrics JSON declares Test split loaded/evaluated
+CNN V2 10% Test split hash matches,PASS,saved=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf; actual=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf
+CNN V2 10% confusion matrix matches predictions,PASS,"recomputed=[[191, 43], [34, 353]]; saved=[[191, 43], [34, 353]]"
+CNN V2 10% auroc matches metrics.json,PASS,recomputed=0.934080920515; saved=0.934080920515
+CNN V2 10% sensitivity matches metrics.json,PASS,recomputed=0.912144702842; saved=0.912144702842
+CNN V2 10% specificity matches metrics.json,PASS,recomputed=0.816239316239; saved=0.816239316239
+CNN V2 10% accuracy matches metrics.json,PASS,recomputed=0.876006441224; saved=0.876006441224
+CNN V2 10% macro_f1 matches metrics.json,PASS,recomputed=0.866952144843; saved=0.866952144843
+CNN V2 25% Test predictions matches Test inventory/order,PASS,prediction rows=621; split rows=621
+CNN V2 25% Test predictions labels match Test,PASS,Row-level labels compared in order
+CNN V2 25% Test evaluation flags,PASS,Saved metrics JSON declares Test split loaded/evaluated
+CNN V2 25% Test split hash matches,PASS,saved=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf; actual=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf
+CNN V2 25% confusion matrix matches predictions,PASS,"recomputed=[[183, 51], [36, 351]]; saved=[[183, 51], [36, 351]]"
+CNN V2 25% auroc matches metrics.json,PASS,recomputed=0.934196868305; saved=0.934196868305
+CNN V2 25% sensitivity matches metrics.json,PASS,recomputed=0.906976744186; saved=0.906976744186
+CNN V2 25% specificity matches metrics.json,PASS,recomputed=0.782051282051; saved=0.782051282051
+CNN V2 25% accuracy matches metrics.json,PASS,recomputed=0.859903381643; saved=0.859903381643
+CNN V2 25% macro_f1 matches metrics.json,PASS,recomputed=0.848840430086; saved=0.848840430086
+CNN V2 50% Test predictions matches Test inventory/order,PASS,prediction rows=621; split rows=621
+CNN V2 50% Test predictions labels match Test,PASS,Row-level labels compared in order
+CNN V2 50% Test evaluation flags,PASS,Saved metrics JSON declares Test split loaded/evaluated
+CNN V2 50% Test split hash matches,PASS,saved=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf; actual=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf
+CNN V2 50% confusion matrix matches predictions,PASS,"recomputed=[[213, 21], [29, 358]]; saved=[[213, 21], [29, 358]]"
+CNN V2 50% auroc matches metrics.json,PASS,recomputed=0.974623997880; saved=0.974623997880
+CNN V2 50% sensitivity matches metrics.json,PASS,recomputed=0.925064599483; saved=0.925064599483
+CNN V2 50% specificity matches metrics.json,PASS,recomputed=0.910256410256; saved=0.910256410256
+CNN V2 50% accuracy matches metrics.json,PASS,recomputed=0.919484702093; saved=0.919484702093
+CNN V2 50% macro_f1 matches metrics.json,PASS,recomputed=0.914841915879; saved=0.914841915879
+CNN V2 100% Test predictions matches Test inventory/order,PASS,prediction rows=621; split rows=621
+CNN V2 100% Test predictions labels match Test,PASS,Row-level labels compared in order
+CNN V2 100% Test evaluation flags,PASS,Saved metrics JSON declares Test split loaded/evaluated
+CNN V2 100% Test split hash matches,PASS,saved=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf; actual=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf
+CNN V2 100% confusion matrix matches predictions,PASS,"recomputed=[[137, 97], [4, 383]]; saved=[[137, 97], [4, 383]]"
+CNN V2 100% auroc matches metrics.json,PASS,recomputed=0.976357693412; saved=0.976357693412
+CNN V2 100% sensitivity matches metrics.json,PASS,recomputed=0.989664082687; saved=0.989664082687
+CNN V2 100% specificity matches metrics.json,PASS,recomputed=0.585470085470; saved=0.585470085470
+CNN V2 100% accuracy matches metrics.json,PASS,recomputed=0.837359098229; saved=0.837359098229
+CNN V2 100% macro_f1 matches metrics.json,PASS,recomputed=0.807086505190; saved=0.807086505190
+MobileNetV2 100% Test predictions matches Test inventory/order,PASS,prediction rows=621; split rows=621
+MobileNetV2 100% Test predictions labels match Test,PASS,Row-level labels compared in order
+MobileNetV2 100% Test evaluation flags,PASS,Saved metrics JSON declares Test split loaded/evaluated
+MobileNetV2 100% Test split hash matches,PASS,saved=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf; actual=8a821b5dc65fa4c516abb22b8bf5be0090ac67108337728fc016d532fcdc83cf
+MobileNetV2 100% confusion matrix matches predictions,PASS,"recomputed=[[145, 89], [2, 385]]; saved=[[145, 89], [2, 385]]"
+MobileNetV2 100% auroc matches metrics.json,PASS,recomputed=0.988167804059; saved=0.988167804059
+MobileNetV2 100% sensitivity matches metrics.json,PASS,recomputed=0.994832041344; saved=0.994832041344
+MobileNetV2 100% specificity matches metrics.json,PASS,recomputed=0.619658119658; saved=0.619658119658
+MobileNetV2 100% accuracy matches metrics.json,PASS,recomputed=0.853462157810; saved=0.853462157810
+MobileNetV2 100% macro_f1 matches metrics.json,PASS,recomputed=0.827731899366; saved=0.827731899366
+CNN V2 10% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+CNN V2 10% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+CNN V2 25% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+CNN V2 25% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+CNN V2 50% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+CNN V2 50% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+CNN V2 100% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+CNN V2 100% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+MobileNetV2 10% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+MobileNetV2 10% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+MobileNetV2 25% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+MobileNetV2 25% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+MobileNetV2 50% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+MobileNetV2 50% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+MobileNetV2 100% Validation predictions matches Validation inventory/order,PASS,prediction rows=1042; split rows=1042
+MobileNetV2 100% Validation predictions labels match Validation,PASS,Row-level labels compared in order
+10% manifest is subset of Train,PASS,416 manifest paths
+25% manifest is subset of Train,PASS,1042 manifest paths
+50% manifest is subset of Train,PASS,2082 manifest paths
+100% manifest is subset of Train,PASS,4164 manifest paths
+Label-efficiency manifests are nested,PASS,10% subset 25% subset 50% subset 100%

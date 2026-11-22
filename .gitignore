@@ -37,3 +37,41 @@ outputs/metrics/predictions.csv
 outputs/experiments/
 outputs/metrics/cnn_from_scratch_v1_history.csv
 outputs/metrics/cnn_from_scratch_v1_training_summary.json
+
+# DL05 repository finalization
+# Keep local audit archives and machine-specific metadata out of Git.
+/archives/
+/audit_metadata/
+/DL05_FINAL_AUDIT_SNAPSHOT*.zip
+/DL05_AUDIT_*.zip
+/DL05_RESULTS_REPRODUCTION_PACK*.zip
+
+# Keep processed data private by default, but version reproducibility splits.
+!data/processed/
+data/processed/*
+
+!data/processed/splits/
+data/processed/splits/*
+!data/processed/splits/*.csv
+!data/processed/splits/*.json
+
+!data/processed/label_efficiency/
+data/processed/label_efficiency/*
+!data/processed/label_efficiency/manifests_v1/
+data/processed/label_efficiency/manifests_v1/*
+!data/processed/label_efficiency/manifests_v1/*.csv
+!data/processed/label_efficiency/manifests_v1/*.json
+!data/processed/label_efficiency/manifests_v1/README.md
+
+# Do not publish row-level medical image metadata or patient manifests.
+data/processed/splits/*.csv
+data/processed/label_efficiency/manifests_v1/*.csv
+
+# Historical experiment logs: retain locally pending review.
+/experiment_logs/
+
+# Local backup source files.
+*.before_fix
+
+# Local repository-finalization working guide.
+/REPOSITORY_FINALIZATION_GUIDE.md

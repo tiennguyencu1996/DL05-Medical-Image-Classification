@@ -1,0 +1,18 @@
+{
+  "project": "DL-05 Medical Image Classification",
+  "operation": "recompute metrics from saved predictions; no training/inference",
+  "project_root": ".",
+  "output_directory": "outputs/reports/verified_results",
+  "test_metric_rows": 7,
+  "label_efficiency_rows": 4,
+  "threshold_rows": 10,
+  "audit_checks_passed": 86,
+  "audit_checks_total": 86,
+  "all_checks_passed": true,
+  "notes": [
+    "AUROC and threshold-dependent metrics are recomputed from stored prediction CSVs.",
+    "For deep-learning Test rows, saved predicted labels are checked against float32 score >= float32 locked threshold.",
+    "The Test metrics are results on the same fixed Test split and should be interpreted with the report's repeated-evaluation limitation.",
+    "This script does not verify or regenerate trained model checkpoints."
+  ]
+}

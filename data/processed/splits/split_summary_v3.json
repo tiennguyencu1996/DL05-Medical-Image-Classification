@@ -1,0 +1,97 @@
+{
+    "dataset": "Chest X-Ray Pneumonia - Mendeley Data Version 3",
+    "input_metadata": "data/processed/metadata_deduplicated_v3.csv",
+    "method": "StratifiedGroupKFold",
+    "n_splits": 5,
+    "validation_fold": 0,
+    "random_state": 42,
+    "total_images": 5827,
+    "splits": {
+        "train": {
+            "number_of_images": 4164,
+            "number_of_unique_patients": 2120,
+            "image_distribution": {
+                "NORMAL": {
+                    "count": 1078,
+                    "prevalence_percent": 25.89
+                },
+                "PNEUMONIA": {
+                    "count": 3086,
+                    "prevalence_percent": 74.11
+                }
+            },
+            "patient_distribution": {
+                "NORMAL": {
+                    "count": 806,
+                    "prevalence_percent": 38.02
+                },
+                "PNEUMONIA": {
+                    "count": 1314,
+                    "prevalence_percent": 61.98
+                }
+            }
+        },
+        "validation": {
+            "number_of_images": 1042,
+            "number_of_unique_patients": 530,
+            "image_distribution": {
+                "NORMAL": {
+                    "count": 270,
+                    "prevalence_percent": 25.91
+                },
+                "PNEUMONIA": {
+                    "count": 772,
+                    "prevalence_percent": 74.09
+                }
+            },
+            "patient_distribution": {
+                "NORMAL": {
+                    "count": 202,
+                    "prevalence_percent": 38.11
+                },
+                "PNEUMONIA": {
+                    "count": 328,
+                    "prevalence_percent": 61.89
+                }
+            }
+        },
+        "test": {
+            "number_of_images": 621,
+            "number_of_unique_patients": 431,
+            "image_distribution": {
+                "NORMAL": {
+                    "count": 234,
+                    "prevalence_percent": 37.68
+                },
+                "PNEUMONIA": {
+                    "count": 387,
+                    "prevalence_percent": 62.32
+                }
+            },
+            "patient_distribution": {
+                "NORMAL": {
+                    "count": 229,
+                    "prevalence_percent": 53.13
+                },
+                "PNEUMONIA": {
+                    "count": 202,
+                    "prevalence_percent": 46.87
+                }
+            }
+        }
+    },
+    "patient_overlap_checks": {
+        "train_validation": 0,
+        "train_test": 0,
+        "validation_test": 0
+    },
+    "original_test_preserved": true,
+    "unique_sha256_hashes": 5827,
+    "outputs": {
+        "train": "data/processed/splits/train_v3.csv",
+        "validation": "data/processed/splits/validation_v3.csv",
+        "test": "data/processed/splits/test_v3.csv",
+        "all_assignments": "data/processed/splits/split_assignments_v3.csv"
+    },
+    "all_checks_passed": true
+}
