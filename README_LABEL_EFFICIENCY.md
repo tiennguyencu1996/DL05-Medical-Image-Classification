@@ -4,21 +4,35 @@
 
 Create four deterministic, nested, patient-level, class-stratified subsets from the fixed `train_v3.csv` split for the mandatory 10%, 25%, 50%, and 100% label-efficiency experiment.
 
-## Install
+## Script location and required input
 
-From the project root, extract this package so that the script is placed at:
+The manifest generator is already included in this repository at
+`scripts/create_label_efficiency_manifests.py`. Run commands from the project
+root with the project's `.venv` activated.
 
-```text
-scripts/create_label_efficiency_manifests.py
-```
+The generator expects the fixed, patient-level Train split at
+`data/processed/splits/train_v3.csv`. That row-level CSV is intentionally
+excluded from the public Git repository and must be restored from the private
+project evidence before running the generator.
 
-## Run
+## Optional regeneration for a new manifest set
+
+The four `manifests_v1` CSVs have already been generated and were used by the
+formal CNN V2 and MobileNetV2 experiments. Do not rerun the default command
+when inspecting or reproducing the reported experiments; preserve the frozen
+`manifests_v1` files.
+
+For a deliberately new manifest set, use a separate output directory rather
+than replacing the recorded manifests:
 
 ```bash
-cd ~/Projects/DL05-Medical-Image-Classification
-source .venv/bin/activate
-python scripts/create_label_efficiency_manifests.py
+python scripts/create_label_efficiency_manifests.py \
+  --output-dir data/processed/label_efficiency/manifests_v2
 ```
+
+The script refuses to overwrite an existing output directory. A newly
+generated manifest set is a new experiment input and must not be substituted
+silently for the recorded `manifests_v1` inputs.
 
 Defaults:
 
@@ -46,7 +60,13 @@ Because patients can contribute different numbers of images, actual percentages 
 
 The four manifests preserve the original Train CSV columns and source row order. The script asserts patient and image nesting and verifies that the 100% manifest contains every Train record.
 
-## Safety
+## Safety and current project status
+
+The recorded project uses the four frozen CSV files under
+`data/processed/label_efficiency/manifests_v1/` for both CNN V2 and
+MobileNetV2. These manifest CSVs contain row-level patient/image metadata and
+are intentionally excluded from public Git; restore them from the private
+archive `archives/DL05_PRIVATE_REPRODUCIBILITY_EVIDENCE_20261123_FINAL.zip`. The archive is excluded from public Git and must be transferred separately when using a clean public clone.
 
 The script refuses to overwrite an existing output directory. If you intentionally need a new version, choose a new `--output-dir`, for example:
 

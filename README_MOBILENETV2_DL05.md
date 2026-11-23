@@ -1,16 +1,12 @@
-# DL-05 — MobileNetV2 Transfer Learning implementation
+# DL-05 — MobileNetV2 Transfer Learning
 
-This implementation adds a separate transfer-learning experiment without modifying any existing CNN V2 experiment, checkpoint, threshold, or Test evaluation.
+This document describes the MobileNetV2 transfer-learning trainer and the four formal label-efficiency runs (10%, 25%, 50%, and 100%) recorded for DL-05. All four formal runs have been completed using the same fixed patient-level Train/Validation protocol and the same four nested Train manifests used by CNN V2. The historical CNN V2 pilot and the separate CNN V1 experiments are not part of the MobileNetV2 formal results.
 
-## Placement in the existing project
+## Repository status and required inputs
 
-Copy the supplied Python file to:
+The trainer source is already part of this repository at `src/training/train_mobilenetv2_label_efficiency.py`. Do not copy or extract an earlier development package over the finalized project.
 
-```text
-src/training/train_mobilenetv2_label_efficiency.py
-```
-
-It expects the existing project layout and these already-audited files:
+The public Git repository intentionally excludes row-level patient metadata, split CSVs, manifest CSVs, and the raw Chest X-Ray images. Before running a new training session, restore the required private files to their original project-relative paths:
 
 ```text
 data/processed/splits/train_v3.csv
@@ -23,7 +19,7 @@ data/processed/label_efficiency/manifests_v1/train_100pct.csv
 data/interim/version3/CellData/chest_xray/...
 ```
 
-The script checks the existing frozen SHA256 hashes, class/image/patient counts, patient-group completeness, and Train–Validation separation. It never opens `test_v3.csv`.
+These row-level metadata, split, and manifest files are included in the private reproducibility archive `archives/DL05_PRIVATE_REPRODUCIBILITY_EVIDENCE_20261123_FINAL.zip`. The archive is excluded from public Git and must be transferred separately when using a clean public clone. The original image dataset is not included and must be supplied separately for training or fresh image evaluation. The script checks the frozen SHA-256 hashes, class/image/patient counts, patient-group completeness, and Train–Validation separation. The training script does not open `test_v3.csv`; Test evaluation is handled separately by `scripts/evaluate_mobilenetv2_test.py`.
 
 ## Model and protocol
 
@@ -39,9 +35,13 @@ The script checks the existing frozen SHA256 hashes, class/image/patient counts,
 - Checkpoint selection: exact scikit-learn AUROC computed from Validation predictions, across both stages.
 - Operating threshold: after both stages finish, select the highest observed Validation score meeting Sensitivity ≥ 0.99. This is a Validation-only rule; Test remains untouched.
 
-## Run sequence
+## Optional rerun procedure
 
-Activate the existing virtual environment from the project root:
+The four recorded MobileNetV2 formal runs are already complete. Their saved Validation AUROCs are 0.993211 (10%), 0.995140 (25%), 0.997347 (50%), and 0.997990 (100%). Their training summaries, histories, Validation predictions, and best checkpoints are retained under their corresponding `outputs/experiments/` directories.
+
+The commands below document how to deliberately rerun an experiment; they are not required to inspect the recorded results or rebuild the saved-result tables. Do not run them over the existing completed experiment directories. Use a separate working copy with the required private inputs and original image dataset restored, and verify the output-directory/run-state behavior before starting a new run.
+
+Activate the virtual environment from that separate project working copy:
 
 ```bash
 # Run these commands from the repository root.
@@ -103,11 +103,15 @@ outputs/experiments/mobilenetv2_<level>_imagenet_20261122/
 └── training_summary.json
 ```
 
-Do not delete or rename an incomplete run directory. The script refuses to overwrite runs with a mismatched configuration or missing recovery files.
+For the four recorded formal runs, each `best_fine_tune.keras` file is byte-identical by SHA-256 to its corresponding `best.keras`; `best.keras` is the final checkpoint used in the official checkpoint audit. Each `best_frozen.keras` is a distinct intermediate checkpoint and is retained as stage-level evidence. The current archive candidate manifest selects one copy of each final checkpoint plus the four distinct frozen-stage checkpoints. The verified private archive is `archives/DL05_PRIVATE_REPRODUCIBILITY_EVIDENCE_20261123_FINAL.zip`; it is excluded from public Git.
+
+Do not delete or rename an incomplete run directory. The script refuses to overwrite runs with a mismatched configuration or missing recovery files. Preserve the completed experiment directories as evidence; do not use the optional rerun commands against those existing directories.
 
 ## Weights, citations, and caveats
 
-The first training invocation downloads the official Keras MobileNetV2 ImageNet weights if they are not already cached. Internet access is required for that first download. Keep a copy of the resulting checkpoint and record the actual checkpoint SHA256 in the report.
+The four formal MobileNetV2 runs were executed in the recorded macOS Apple-Silicon environment (Python 3.11.4, TensorFlow 2.18.0, and `tensorflow-metal` 1.2.0). Their four official final checkpoints were included in the project-wide eight-checkpoint audit: SHA-256 matched for all four, Keras loading passed, and total/trainable/non-trainable parameter counts matched the expected MobileNetV2 architecture. This checkpoint-load audit did not run inference and must not be described as a fresh prediction-reproduction test.
+
+For a new training run, the first invocation may download the official Keras MobileNetV2 ImageNet weights if they are not already cached. Internet access is required for that first download. Preserve the actual checkpoint SHA-256 values alongside the experiment summaries.
 
 References:
 
